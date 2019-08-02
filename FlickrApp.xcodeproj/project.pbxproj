@@ -111,11 +111,11 @@
 			path = HomeModule;
 			sourceTree = "<group>";
 		};
-		371D947422F4B4E60008B396 /* Service */ = {
+		371D947422F4B4E60008B396 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Service;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		372F6A3B22F4A1F70040D27D = {
@@ -143,7 +143,7 @@
 			children = (
 				371D946622F4AAF00008B396 /* App */,
 				371D946722F4AC2B0008B396 /* HomeModule */,
-				371D947422F4B4E60008B396 /* Service */,
+				371D947422F4B4E60008B396 /* Networking */,
 			);
 			path = FlickrApp;
 			sourceTree = "<group>";
