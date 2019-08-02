@@ -99,12 +99,12 @@
 		371D946722F4AC2B0008B396 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
-				371D946822F4AD820008B396 /* HomeProtocol.swift */,
 				371D946A22F4AF920008B396 /* HomeViewController.swift */,
 				371D946C22F4AFF70008B396 /* HomePresenter.swift */,
 				371D946E22F4B0510008B396 /* HomeInteractor.swift */,
 				371D947022F4B0600008B396 /* HomeRouter.swift */,
 				371D947222F4B0710008B396 /* HomeEntity.swift */,
+				371D946822F4AD820008B396 /* HomeProtocol.swift */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";

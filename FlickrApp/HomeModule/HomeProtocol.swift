@@ -37,7 +37,7 @@ protocol HomePresenterToViewProtocol:class {
 //MARK: Presenter and Interactor
 protocol HomePresenterToInteractorProtocol:class {
     var presenter:HomeInteractorToPresenterProtocol? {get set}
-    func fetchImageFromService(with query:String, page:Int)
+    func searchImageFromService(withText query:String, page:Int, pageCount:Int)
     
 }
 protocol HomeInteractorToPresenterProtocol:class {

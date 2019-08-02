@@ -9,5 +9,12 @@
 import UIKit
 
 class HomeInteractor: NSObject {
+    weak var presenter:HomeInteractorToPresenterProtocol?
 
+}
+
+extension HomeInteractor : HomePresenterToInteractorProtocol{
+    func searchImageFromService(withText query:String, page:Int, pageCount:Int){
+        
+    }
 }
