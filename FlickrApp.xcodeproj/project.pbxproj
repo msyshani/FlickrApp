@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		371D946922F4AD820008B396 /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D946822F4AD820008B396 /* HomeProtocol.swift */; };
+		371D946B22F4AF920008B396 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D946A22F4AF920008B396 /* HomeViewController.swift */; };
+		371D946D22F4AFF70008B396 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D946C22F4AFF70008B396 /* HomePresenter.swift */; };
+		371D946F22F4B0510008B396 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D946E22F4B0510008B396 /* HomeInteractor.swift */; };
+		371D947122F4B0600008B396 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D947022F4B0600008B396 /* HomeRouter.swift */; };
+		371D947322F4B0710008B396 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D947222F4B0710008B396 /* HomeEntity.swift */; };
 		372F6A4822F4A1F70040D27D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F6A4722F4A1F70040D27D /* AppDelegate.swift */; };
 		372F6A4D22F4A1F70040D27D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372F6A4B22F4A1F70040D27D /* Main.storyboard */; };
 		372F6A4F22F4A1FA0040D27D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372F6A4E22F4A1FA0040D27D /* Assets.xcassets */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		371D946822F4AD820008B396 /* HomeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
+		371D946A22F4AF920008B396 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		371D946C22F4AFF70008B396 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		371D946E22F4B0510008B396 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		371D947022F4B0600008B396 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		371D947222F4B0710008B396 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 		372F6A4422F4A1F70040D27D /* FlickrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372F6A4722F4A1F70040D27D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372F6A4C22F4A1F70040D27D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				371D946822F4AD820008B396 /* HomeProtocol.swift */,
+				371D946A22F4AF920008B396 /* HomeViewController.swift */,
+				371D946C22F4AFF70008B396 /* HomePresenter.swift */,
+				371D946E22F4B0510008B396 /* HomeInteractor.swift */,
+				371D947022F4B0600008B396 /* HomeRouter.swift */,
+				371D947222F4B0710008B396 /* HomeEntity.swift */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -273,7 +288,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				371D946922F4AD820008B396 /* HomeProtocol.swift in Sources */,
+				371D947122F4B0600008B396 /* HomeRouter.swift in Sources */,
+				371D947322F4B0710008B396 /* HomeEntity.swift in Sources */,
 				372F6A4822F4A1F70040D27D /* AppDelegate.swift in Sources */,
+				371D946B22F4AF920008B396 /* HomeViewController.swift in Sources */,
+				371D946F22F4B0510008B396 /* HomeInteractor.swift in Sources */,
+				371D946D22F4AFF70008B396 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
