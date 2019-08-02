@@ -74,6 +74,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		371D946622F4AAF00008B396 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				372F6A4722F4A1F70040D27D /* AppDelegate.swift */,
+				372F6A4E22F4A1FA0040D27D /* Assets.xcassets */,
+				372F6A4B22F4A1F70040D27D /* Main.storyboard */,
+				372F6A5322F4A1FA0040D27D /* Info.plist */,
+				372F6A5022F4A1FA0040D27D /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		372F6A3B22F4A1F70040D27D = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +109,8 @@
 		372F6A4622F4A1F70040D27D /* FlickrApp */ = {
 			isa = PBXGroup;
 			children = (
-				372F6A4722F4A1F70040D27D /* AppDelegate.swift */,
+				371D946622F4AAF00008B396 /* App */,
 				372F6A4922F4A1F70040D27D /* ViewController.swift */,
-				372F6A4B22F4A1F70040D27D /* Main.storyboard */,
-				372F6A4E22F4A1FA0040D27D /* Assets.xcassets */,
-				372F6A5022F4A1FA0040D27D /* LaunchScreen.storyboard */,
-				372F6A5322F4A1FA0040D27D /* Info.plist */,
 			);
 			path = FlickrApp;
 			sourceTree = "<group>";
