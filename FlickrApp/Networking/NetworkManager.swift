@@ -20,8 +20,8 @@ protocol APIRequest {
     associatedtype RequestDataType
     associatedtype ResponseDataType
    
-    func makeRequest(from data: RequestDataType) throws -> URLRequest
-    func parseResponse(data: Data) throws -> ResponseDataType
+    func makeRequest(from data: RequestDataType) throws -> URLRequest?
+    func parseResponse(data: Data) throws -> ResponseDataType?
     func shouldCacheResponse() -> Bool
 }
 
@@ -29,6 +29,12 @@ extension APIRequest {
     func shouldCacheResponse() -> Bool {
         return false
     }
+}
+
+enum FlickrServiceError: Error {
+    case invalidImageData
+    case invalidRequest
+    /// Error when the retrieved image could not be parsed.
 }
 
 
@@ -46,7 +52,10 @@ class APIRequestLoader<T: APIRequest> {
     func loadAPIRequest(requestData: T.RequestDataType,
                         completionHandler: @escaping (T.ResponseDataType?, Error?) -> Void) {
         do {
-            let urlRequest = try apiRequest.makeRequest(from: requestData)
+            guard let urlRequest = try apiRequest.makeRequest(from: requestData) else{
+                 completionHandler(nil, FlickrServiceError.invalidRequest)
+                return
+            }
             
             if let response = getCachedData(from: urlRequest) {
                 completionHandler(response, nil)
