@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ImageDownloader: NSObject {
+class ImageDownloader {
     static var downloader = ImageDownloader()
     var imageCache = NSCache<NSString, AnyObject>()
     
-    override init() {
-        super.init()
+     init() {
         imageCache.countLimit = 1000
         NotificationCenter.default.addObserver(self, selector: #selector(clearAllImages), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
     }

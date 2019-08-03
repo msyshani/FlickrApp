@@ -45,6 +45,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="rYm-f3-Zmx" id="Lzl-JA-pcJ"/>
                                     <outlet property="delegate" destination="rYm-f3-Zmx" id="MUZ-8n-3Cg"/>
+                                    <outlet property="prefetchDataSource" destination="rYm-f3-Zmx" id="Ubl-Qr-Ruc"/>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait we are fetching the images for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wb0-8l-6Vr">

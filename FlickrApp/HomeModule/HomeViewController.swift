@@ -37,7 +37,8 @@ class HomeViewController: UIViewController {
 
 
 //MARK: - CollectionView Delegate and Datasource
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching{
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return presenter?.numberOfSection() ?? 0
     }
@@ -91,6 +92,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if indexPath.section == 0 {
+                if let urlString = presenter?.getImageUrl(atIndexPath: indexPath){
+                    ImageDownloader.downloader.getDownloadedImage(urlStr: urlString) { (image) in }
+                }
+            } else {
+            
+            }
+        }
     }
 }
 
