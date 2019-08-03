@@ -41,7 +41,8 @@ protocol HomePresenterToInteractorProtocol:class {
     
 }
 protocol HomeInteractorToPresenterProtocol:class {
-    
+    func imageFetchingRequestCompletedSuccessfully(modelArray:[FlickrPhoto])
+    func imgaeFetchingRequestFailed(withError error: Error)
     
 }
 

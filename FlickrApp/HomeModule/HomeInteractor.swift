@@ -21,9 +21,17 @@ extension HomeInteractor : HomePresenterToInteractorProtocol{
                                         "text": query,
                                         "per_page": String(pageCount)]
         //Fetch image array from server
-        flickerAPIService.loadAPIRequest(requestData: params) { (modelArray, error) in
-            
+        flickerAPIService.loadAPIRequest(requestData: params) { [weak self ] (modelArray, error) in
+            if let photoArray = modelArray{
+                if photoArray.count > 0{
+                    self?.presenter?.imageFetchingRequestCompletedSuccessfully(modelArray: photoArray)
+                }else{
+                    self?.presenter?.imgaeFetchingRequestFailed(withError: FlickrServiceError.noData)
+                }
+                
+            }else{
+                self?.presenter?.imgaeFetchingRequestFailed(withError: FlickrServiceError.parsingFailed)
+            }
         }
-        
     }
 }
