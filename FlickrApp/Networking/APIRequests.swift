@@ -35,6 +35,7 @@ class FlickrAPIRequests : APIRequest{
         }
         
         let url = try? URLEncoder().urlWith(urlString: "https://api.flickr.com/services/rest/", parameters: params)
+        print(url)
         let urlRequest = URLRequest(url: url!)
         return urlRequest
     }
@@ -46,8 +47,8 @@ class FlickrAPIRequests : APIRequest{
     /// - Returns: A FlickrModel Array for the search result.
     func parseResponse(data: Data) throws -> PhotoSearchResult?{
         do{
-            let flickrModelArray = try JSONDecoder().decode(PhotoSearchResult.self, from: data)
-            return flickrModelArray
+            let flickrModel = try JSONDecoder().decode(PhotoSearchResultWrapper.self, from: data)
+            return flickrModel.result
         }catch{
             print(error)
         }
