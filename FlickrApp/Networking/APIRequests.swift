@@ -44,9 +44,9 @@ class FlickrAPIRequests : APIRequest{
     /// - Parameters:
     ///   - data: The data has to convert in model Array.
     /// - Returns: A FlickrModel Array for the search result.
-    func parseResponse(data: Data) throws -> [FlickrPhoto]?{
+    func parseResponse(data: Data) throws -> PhotoSearchResult?{
         do{
-            let flickrModelArray = try JSONDecoder().decode([FlickrPhoto].self, from: data)
+            let flickrModelArray = try JSONDecoder().decode(PhotoSearchResult.self, from: data)
             return flickrModelArray
         }catch{
             print(error)

@@ -10,7 +10,7 @@ import Foundation
 
 
 /// Search result returned when searching images using `Flickr API service`.
-struct FlickrPhotoSearchResult: Decodable {
+struct PhotoSearchResult: Decodable {
     /// The page that was retrieved.
     var page: Int
     
@@ -28,8 +28,8 @@ struct FlickrPhotoSearchResult: Decodable {
 }
 
 /// Wrapper for parsing the result from Flickr.
-struct FlickrPhotoSearchResultWrapper: Decodable {
-    var result: FlickrPhotoSearchResult
+struct PhotoSearchResultWrapper: Decodable {
+    var result: PhotoSearchResult
     
     private enum CodingKeys: String, CodingKey {
         case result = "photos"

@@ -59,10 +59,11 @@ extension HomePresenter : HomeViewToPresenterProtocol{
 
 //MARK: - HomeInteractorToPresenterProtocol
 extension HomePresenter : HomeInteractorToPresenterProtocol{
-    func imageFetchingRequestCompletedSuccessfully(modelArray:[FlickrPhoto]){
+    func imageFetchingRequestCompletedSuccessfully(model:PhotoSearchResult){
         DispatchQueue.main.async {
             self.page = self.page + 1
-            self.imageArray = modelArray
+            self.imageArray = model.photos
+            self.hasMoreData = model.page < model.pages
             self.view?.reloadTable()
         }
     }
