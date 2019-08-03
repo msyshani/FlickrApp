@@ -34,6 +34,7 @@ class HomeViewController: UIViewController {
 }
 
 
+//MARK: - CollectionView Delegate and Datasource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 0
@@ -70,4 +71,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
+}
+
+//MARK: - HomePresenterToViewProtocol
+extension HomeViewController : HomePresenterToViewProtocol{
+    func reloadTable() {
+        activityIndicator.stopAnimating()
+        infoLabel.isHidden = true
+        self.collectionView.isHidden = false
+        self.collectionView.reloadData()
+    }
+    
+    func displayError(errorMessage: String) {
+        
+    }
+    
+    
 }
