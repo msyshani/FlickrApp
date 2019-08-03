@@ -15,16 +15,16 @@ protocol HomeViewToPresenterProtocol:class {
     var interactor:HomePresenterToInteractorProtocol? {get set}
     var router:HomePresenterToRouterProtocol? {get set}
     
-    var imageArray: [Any] { get set }
+    var imageArray: [FlickrPhoto] { get set }
     var page : Int { get set }
     var queryText :String { get set }
     
     func viewDidLoad()
-    func searchPhoto(withText query:String, page:Int, pageCount:Int)
+    func searchPhoto(withText query:String, page:Int)
     //TableView
     func numberOfSection()->Int
     func numberOfRow(inSection section:Int)->Int
-    func image(atIndexPath index:IndexPath)->Any
+    func image(atIndexPath index:IndexPath)->FlickrPhoto
     func selectRow(atIndexPath index:IndexPath)
 }
 
