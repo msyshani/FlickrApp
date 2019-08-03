@@ -15,6 +15,8 @@ class ImageCollectionCell: UICollectionViewCell,ReusableViewProtocol {
         return UINib(nibName: String(describing: ImageCollectionCell.self), bundle: nil)
     }
     @IBOutlet weak var imgView: UIImageView!
+    /// This property can be used to avoid displaying the wrong image when reusing cells.
+    var imageId: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,23 +28,4 @@ class ImageCollectionCell: UICollectionViewCell,ReusableViewProtocol {
         self.imgView.image = nil
     }
     
-    func configureCell(model:FlickrPhoto){
-        var url = "http://farm{farm}.static.flickr.com/{server}/{id}_{secret}.jpg"
-        if let farm = model.farm{
-            url = url.replacingOccurrences(of: "{farm}", with: String(farm))
-        }
-        if let server = model.server{
-            url = url.replacingOccurrences(of: "{server}", with: String(server))
-        }
-        if let secret = model.secret{
-            url = url.replacingOccurrences(of: "{secret}", with: secret)
-        }
-        if let id = model.id{
-            url = url.replacingOccurrences(of: "{id}", with: id)
-        }
-        
-        
-        
-    }
-
 }

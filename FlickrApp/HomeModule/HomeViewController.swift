@@ -66,12 +66,25 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:ImageCollectionCell = collectionView.dequeueReusableCell(for: indexPath)
-        
-        if let model = presenter?.image(atIndexPath: indexPath){
-            cell.configureCell(model: model)
-        }
-        
+        self.loadPhoto(for: cell, at: indexPath)
         return cell
+    }
+    
+    private func loadPhoto(for cell: ImageCollectionCell, at indexPath: IndexPath) {
+        let photo = self.presenter?.image(atIndexPath: indexPath)
+        cell.imageId = photo?.id
+        
+        cell.imgView.image = nil
+        if let urlString = presenter?.getImageUrl(atIndexPath: indexPath){
+            ImageDownloader.downloader.getDownloadedImage(urlStr: urlString) { (image) in
+                guard cell.imageId == photo?.id else {
+                    return
+                }
+                if let img = image{
+                    cell.imgView.image = img
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -46,12 +46,34 @@ extension HomePresenter : HomeViewToPresenterProtocol{
         return imageArray.count
     }
     
+    func getImageUrl(atIndexPath index:IndexPath)->String{
+        let urlStr = self.path(for: imageArray[index.row])
+        return urlStr
+    }
+    
     func image(atIndexPath index:IndexPath)->FlickrPhoto{
         return imageArray[index.row]
     }
     
     func selectRow(atIndexPath index: IndexPath) {
         
+    }
+    
+    private func path(for photo: FlickrPhoto) -> String {
+        var url = "http://farm{farm}.static.flickr.com/{server}/{id}_{secret}.jpg"
+        if let farm = photo.farm{
+            url = url.replacingOccurrences(of: "{farm}", with: String(farm))
+        }
+        if let server = photo.server{
+            url = url.replacingOccurrences(of: "{server}", with: String(server))
+        }
+        if let secret = photo.secret{
+            url = url.replacingOccurrences(of: "{secret}", with: secret)
+        }
+        if let id = photo.id{
+            url = url.replacingOccurrences(of: "{id}", with: id)
+        }
+        return url
     }
     
     

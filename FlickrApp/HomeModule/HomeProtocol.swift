@@ -24,6 +24,7 @@ protocol HomeViewToPresenterProtocol:class {
     //TableView
     func numberOfSection()->Int
     func numberOfRow(inSection section:Int)->Int
+    func getImageUrl(atIndexPath index:IndexPath)->String
     func image(atIndexPath index:IndexPath)->FlickrPhoto
     func selectRow(atIndexPath index:IndexPath)
 }
