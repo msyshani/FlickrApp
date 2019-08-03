@@ -48,9 +48,7 @@ protocol HomeInteractorToPresenterProtocol:class {
 
 //MARK: Presenter and Router
 protocol HomePresenterToRouterProtocol:class {
-    func pushContactDetailScreen(from view: HomePresenterToViewProtocol?, forContact contact: Any)
-    func pushAddContactScreen(from view: HomePresenterToViewProtocol?, forContact contact: Any)
-    
+
 }
 protocol HomeRouterToPresenterProtocol:class {
     

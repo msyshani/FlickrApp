@@ -8,6 +8,39 @@
 
 import UIKit
 
-class HomeRouter: NSObject {
+class HomeRouter{
+    static var bundle : Bundle? {
+        return Bundle.init(identifier: "com.msy.FlickrApp")
+    }
+    
+    static var storyboard : UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: bundle)
+    }
+    
+    static func createHomeModule()->UINavigationController?{
+        let navController:UINavigationController = storyboard.instantiateViewController(withIdentifier: "FlickrNavigationController") as! UINavigationController
+        
+        if let viewController = navController.children.first as? HomeViewController {
+            let presenter: HomeViewToPresenterProtocol & HomeInteractorToPresenterProtocol  = HomePresenter()
+            let interactor : HomePresenterToInteractorProtocol = HomeInteractor()
+            let router : HomePresenterToRouterProtocol = HomeRouter()
+            
+            //Presenter
+            presenter.view = viewController
+            presenter.interactor = interactor
+            presenter.router = router
+            //Interatcor
+            interactor.presenter = presenter
+            //View
+            viewController.presenter = presenter
+            return navController
+        }
+        
+        return UINavigationController()
+    }
+}
 
+extension HomeRouter : HomePresenterToRouterProtocol{
+    
+    
 }
