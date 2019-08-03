@@ -39,7 +39,18 @@ class FlickrAPIRequests : APIRequest{
         return urlRequest
     }
     
-    func parseResponse(data: Data) throws -> String?{
+    /// return an array of FlickrModel.
+    ///
+    /// - Parameters:
+    ///   - data: The data has to convert in model Array.
+    /// - Returns: A FlickrModel Array for the search result.
+    func parseResponse(data: Data) throws -> [FlickrPhoto]?{
+        do{
+            let flickrModelArray = try JSONDecoder().decode([FlickrPhoto].self, from: data)
+            return flickrModelArray
+        }catch{
+            print(error)
+        }
         return nil
     }
 
