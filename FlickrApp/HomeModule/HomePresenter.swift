@@ -17,6 +17,7 @@ class HomePresenter {
     var queryText = "kitten"
     var page = 1
     private var hasMoreData = false
+    private var isLoadingNextPage: Bool = false
 
 }
 
@@ -38,12 +39,23 @@ extension HomePresenter : HomeViewToPresenterProtocol{
         self.interactor?.searchImageFromService(withText: queryText, page: page, pageCount: 100)
     }
     
+    func searchMorePhotos(withText query: String) {
+        guard !isLoadingNextPage && hasMoreData else {
+            return
+        }
+        isLoadingNextPage = true
+        self.interactor?.searchImageFromService(withText: queryText, page: page, pageCount: 100)
+    }
+    
     func numberOfSection() -> Int {
-        return 1
+        return self.hasMoreData ? 2 : 1
     }
     
     func numberOfRow(inSection section: Int) -> Int {
-        return imageArray.count
+        if section == 0 {
+            return imageArray.count
+        }
+        return 1
     }
     
     func getImageUrl(atIndexPath index:IndexPath)->String{
@@ -83,10 +95,15 @@ extension HomePresenter : HomeViewToPresenterProtocol{
 extension HomePresenter : HomeInteractorToPresenterProtocol{
     func imageFetchingRequestCompletedSuccessfully(model:PhotoSearchResult){
         DispatchQueue.main.async {
+            if self.page == 1{
+                self.imageArray = model.photos
+            } else {
+                self.imageArray.append(contentsOf: model.photos)
+            }
             self.page = self.page + 1
-            self.imageArray = model.photos
             self.hasMoreData = model.page < model.pages
             self.view?.reloadTable()
+            self.isLoadingNextPage = false
         }
     }
     

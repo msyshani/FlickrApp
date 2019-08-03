@@ -21,6 +21,7 @@ protocol HomeViewToPresenterProtocol:class {
     
     func viewDidLoad()
     func searchPhoto(withText query:String, page:Int)
+    func searchMorePhotos(withText query: String)
     //TableView
     func numberOfSection()->Int
     func numberOfRow(inSection section:Int)->Int

@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
 
     func registercells(){
         collectionView.registerReusableViewCell(ImageCollectionCell.self)
+        collectionView.registerReusableViewCell(ActivityIndicatorCell.self)
     }
     
     func setUpView(){
@@ -48,9 +49,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        let width = self.view.frame.width / 3.2
-        return CGSize(width: width , height: width)
+        if indexPath.section == 0 {
+            let width = self.view.frame.width / 3.2
+            return CGSize(width: width , height: width)
+        }
         
+        // The loading more has a fixed height of 44 and is the full width of the view.
+        return CGSize(width: self.view.frame.width, height: 44)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
@@ -62,13 +67,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.imageArray.count ?? 0
+        return presenter?.numberOfRow(inSection: section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:ImageCollectionCell = collectionView.dequeueReusableCell(for: indexPath)
-        self.loadPhoto(for: cell, at: indexPath)
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell:ImageCollectionCell = collectionView.dequeueReusableCell(for: indexPath)
+            self.loadPhoto(for: cell, at: indexPath)
+            return cell
+        case 1:
+            let cell:ActivityIndicatorCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+        
     }
     
     private func loadPhoto(for cell: ImageCollectionCell, at indexPath: IndexPath) {
@@ -89,6 +103,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else {
+            return
+        }
+        (cell as! ActivityIndicatorCell).isAnimating = true
+        self.presenter?.searchMorePhotos(withText: "kitten")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else {
+            return
+        }
+        (cell as! ActivityIndicatorCell).isAnimating = false
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -101,7 +127,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     ImageDownloader.downloader.getDownloadedImage(urlStr: urlString) { (image) in }
                 }
             } else {
-            
+                self.presenter?.searchMorePhotos(withText: "kitten")
             }
         }
     }
