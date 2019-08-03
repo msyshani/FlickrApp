@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
 //MARK: - CollectionView Delegate and Datasource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return presenter?.numberOfSection() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
@@ -65,7 +65,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell:ImageCollectionCell = collectionView.dequeueReusableCell(for: indexPath)
+        
+        if let model = presenter?.image(atIndexPath: indexPath){
+            cell.configureCell(model: model)
+        }
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
