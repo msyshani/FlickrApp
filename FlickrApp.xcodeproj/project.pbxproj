@@ -129,6 +129,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		371D947F22F55B330008B396 /* testHomeModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = testHomeModule;
+			sourceTree = "<group>";
+		};
 		372F6A3B22F4A1F70040D27D = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +169,7 @@
 		372F6A5B22F4A1FA0040D27D /* FlickrAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				371D947F22F55B330008B396 /* testHomeModule */,
 				372F6A5C22F4A1FA0040D27D /* FlickrAppTests.swift */,
 				371D947522F4B73F0008B396 /* testHomeEntity.swift */,
 				371D947D22F4D4E30008B396 /* testAPIRequests.swift */,
