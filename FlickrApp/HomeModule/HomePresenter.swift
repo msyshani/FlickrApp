@@ -8,6 +8,34 @@
 
 import UIKit
 
-class HomePresenter: NSObject {
+class HomePresenter {
+    weak var view:HomePresenterToViewProtocol?
+    var interactor:HomePresenterToInteractorProtocol?
+    var router:HomePresenterToRouterProtocol?
+    //.....
+    var imageArray = [FlickrPhoto]()
+    var queryText = "kitten"
+    var page = 1
 
 }
+
+extension HomePresenter : HomeInteractorToPresenterProtocol{
+    
+    func imageFetchingRequestCompletedSuccessfully(modelArray:[FlickrPhoto]){
+        DispatchQueue.main.async {
+           self.imageArray = modelArray
+            self.view?.reloadTable()
+        }
+    }
+    
+    func imgaeFetchingRequestFailed(withError error: Error) {
+        DispatchQueue.main.async {
+            self.view?.displayError(errorMessage: error.localizedDescription)
+        }
+        
+    }
+    
+}
+
+
+
