@@ -16,20 +16,22 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //
+        registercells()
+        presenter?.viewDidLoad()
+        setUpView()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func registercells(){
+        collectionView.registerReusableViewCell(ImageCollectionCell.self)
     }
-    */
+    
+    func setUpView(){
+        collectionView.isHidden = true
+        activityIndicator.isHidden = false
+        infoLabel.isHidden = false
+    }
 
 }
 

@@ -42,13 +42,13 @@ struct FlickrPhoto: Decodable {
     
     // MARK: - Properties
     /// The id of the image.
-    var id: String
+    var id: String?
     /// The title of the image.
-    var title: String
+    var title: String?
     
     // MARK: - Image URL Properties
     // The following properties are used to create the url for retrieving the image.
-    var farm: Int
-    var secret: String
-    var server: String
+    var farm: Int?
+    var secret: String?
+    var server: String?
 }

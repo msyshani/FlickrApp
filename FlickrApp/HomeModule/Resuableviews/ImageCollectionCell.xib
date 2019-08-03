@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ImageCollectionCell" customModule="PicSum" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="190" height="89"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="190" height="89"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-ES-BXU">
+                        <rect key="frame" x="0.0" y="0.0" width="190" height="89"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="FDD-ES-BXU" secondAttribute="bottom" id="7O3-WW-QLb"/>
+                <constraint firstItem="FDD-ES-BXU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MSk-XP-lBN"/>
+                <constraint firstAttribute="trailing" secondItem="FDD-ES-BXU" secondAttribute="trailing" id="W5K-Xp-iwa"/>
+                <constraint firstItem="FDD-ES-BXU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="snl-Jp-YRe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="190" height="89"/>
+            <connections>
+                <outlet property="imgView" destination="FDD-ES-BXU" id="DI8-Ii-jbx"/>
+            </connections>
+            <point key="canvasLocation" x="12.800000000000001" y="-76.011994002998506"/>
+        </collectionViewCell>
+    </objects>
+</document>
