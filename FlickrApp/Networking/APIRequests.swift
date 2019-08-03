@@ -8,7 +8,7 @@
 
 import UIKit
 
-class APIRequests : APIRequest{
+class FlickrAPIRequests : APIRequest{
     //API key
     private static let apiKey = "3e7cc266ae2b0e0d78e279ce8e361736"
     /// return an UrlRequest.
@@ -18,13 +18,21 @@ class APIRequests : APIRequest{
     /// - Returns: An UrlRequest.
     func makeRequest(from dic:[String:String]) throws -> URLRequest? {
         
-        let params: [String: String] = ["safe_search": "1",
-                                        "page": dic["pageNumber"] ?? "100" ,
-                                        "text": dic["query"] ?? "kitten" ,
+        var params: [String: String] = ["method": "flickr.photos.search",
                                         "api_key": type(of: self).apiKey,
+                                        "format":"json",
                                         "nojsoncallback":"1",
-                                        "per_page": dic["pageCount"] ?? "1",
-                                        "method":"flickr.photos.search"]
+                                        "safe_search" : "1"]
+        
+        if let text = dic["text"]{
+            params["text"] = text
+        }
+        if let pageNumber = dic["page"]{
+            params["page"] = pageNumber
+        }
+        if let per_page = dic["per_page"]{
+            params["per_page"] = per_page
+        }
         
         let url = try? URLEncoder().urlWith(urlString: "https://api.flickr.com/services/rest/", parameters: params)
         let urlRequest = URLRequest(url: url!)
