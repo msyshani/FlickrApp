@@ -15,7 +15,6 @@ protocol HomeViewToPresenterProtocol:class {
     var interactor:HomePresenterToInteractorProtocol? {get set}
     var router:HomePresenterToRouterProtocol? {get set}
     
-    var imageArray: [FlickrPhoto] { get set }
     var page : Int { get set }
     var queryText :String { get set }
     
@@ -32,6 +31,7 @@ protocol HomeViewToPresenterProtocol:class {
 
 protocol HomePresenterToViewProtocol:class {
     var presenter: HomeViewToPresenterProtocol? {get set}
+    
     func reloadTable()
     func displayError(errorMessage:String)
     func showIdealState()
@@ -46,6 +46,7 @@ protocol HomePresenterToInteractorProtocol:class {
     
 }
 protocol HomeInteractorToPresenterProtocol:class {
+    var imageArray: [FlickrPhoto] { get set }
     func imageFetchingRequestCompletedSuccessfully(model: PhotoSearchResult)
     func imgaeFetchingRequestFailed(withError error: Error)
     

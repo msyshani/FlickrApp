@@ -22,7 +22,7 @@ class HomeRouter{
         
         if let viewController = navController.children.first as? HomeViewController {
             let presenter: HomeViewToPresenterProtocol & HomeInteractorToPresenterProtocol  = HomePresenter()
-            let interactor : HomePresenterToInteractorProtocol = HomeInteractor()
+            let interactor : HomePresenterToInteractorProtocol = HomeInteractor(with: APIRequestLoader(apiRequest: FlickrAPIRequests()))
             let router : HomePresenterToRouterProtocol = HomeRouter()
             
             //Presenter

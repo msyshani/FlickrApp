@@ -26,6 +26,11 @@
 		371D948D22F5CE090008B396 /* ActivityIndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371D948B22F5CE090008B396 /* ActivityIndicatorCell.xib */; };
 		371D949022F6C3FA0008B396 /* ErrorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D948F22F6C3FA0008B396 /* ErrorEnums.swift */; };
 		371D949222F6C60D0008B396 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949122F6C60D0008B396 /* Constant.swift */; };
+		371D949422F6F08F0008B396 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949322F6F08F0008B396 /* HomeInteractorTests.swift */; };
+		371D949722F6F9CB0008B396 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949622F6F9CB0008B396 /* NetworkManagerTests.swift */; };
+		371D949922F6FB2C0008B396 /* NetworkBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949822F6FB2C0008B396 /* NetworkBaseTest.swift */; };
+		371D949B22F6FBA20008B396 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949A22F6FBA20008B396 /* Extensions.swift */; };
+		371D949D22F6FDAA0008B396 /* HomePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949C22F6FDAA0008B396 /* HomePresenterTest.swift */; };
 		372F6A4822F4A1F70040D27D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F6A4722F4A1F70040D27D /* AppDelegate.swift */; };
 		372F6A4D22F4A1F70040D27D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372F6A4B22F4A1F70040D27D /* Main.storyboard */; };
 		372F6A4F22F4A1FA0040D27D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372F6A4E22F4A1FA0040D27D /* Assets.xcassets */; };
@@ -71,6 +76,11 @@
 		371D948B22F5CE090008B396 /* ActivityIndicatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorCell.xib; sourceTree = "<group>"; };
 		371D948F22F6C3FA0008B396 /* ErrorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnums.swift; sourceTree = "<group>"; };
 		371D949122F6C60D0008B396 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		371D949322F6F08F0008B396 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
+		371D949622F6F9CB0008B396 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		371D949822F6FB2C0008B396 /* NetworkBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBaseTest.swift; sourceTree = "<group>"; };
+		371D949A22F6FBA20008B396 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		371D949C22F6FDAA0008B396 /* HomePresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTest.swift; sourceTree = "<group>"; };
 		372F6A4422F4A1F70040D27D /* FlickrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372F6A4722F4A1F70040D27D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372F6A4C22F4A1F70040D27D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +159,8 @@
 		371D947F22F55B330008B396 /* testHomeModule */ = {
 			isa = PBXGroup;
 			children = (
+				371D949322F6F08F0008B396 /* HomeInteractorTests.swift */,
+				371D949C22F6FDAA0008B396 /* HomePresenterTest.swift */,
 			);
 			path = testHomeModule;
 			sourceTree = "<group>";
@@ -178,8 +190,18 @@
 			children = (
 				371D948F22F6C3FA0008B396 /* ErrorEnums.swift */,
 				371D949122F6C60D0008B396 /* Constant.swift */,
+				371D949A22F6FBA20008B396 /* Extensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		371D949522F6F9C00008B396 /* NetworkTest */ = {
+			isa = PBXGroup;
+			children = (
+				371D949622F6F9CB0008B396 /* NetworkManagerTests.swift */,
+				371D949822F6FB2C0008B396 /* NetworkBaseTest.swift */,
+			);
+			path = NetworkTest;
 			sourceTree = "<group>";
 		};
 		372F6A3B22F4A1F70040D27D = {
@@ -217,6 +239,7 @@
 		372F6A5B22F4A1FA0040D27D /* FlickrAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				371D949522F6F9C00008B396 /* NetworkTest */,
 				371D947F22F55B330008B396 /* testHomeModule */,
 				372F6A5C22F4A1FA0040D27D /* FlickrAppTests.swift */,
 				371D947522F4B73F0008B396 /* testHomeEntity.swift */,
@@ -382,6 +405,7 @@
 				371D946B22F4AF920008B396 /* HomeViewController.swift in Sources */,
 				371D946F22F4B0510008B396 /* HomeInteractor.swift in Sources */,
 				371D948722F5A5E80008B396 /* ReusableHandler.swift in Sources */,
+				371D949B22F6FBA20008B396 /* Extensions.swift in Sources */,
 				371D947A22F4C8F90008B396 /* APIRequests.swift in Sources */,
 				371D946D22F4AFF70008B396 /* HomePresenter.swift in Sources */,
 			);
@@ -391,9 +415,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371D949722F6F9CB0008B396 /* NetworkManagerTests.swift in Sources */,
+				371D949D22F6FDAA0008B396 /* HomePresenterTest.swift in Sources */,
+				371D949922F6FB2C0008B396 /* NetworkBaseTest.swift in Sources */,
 				372F6A5D22F4A1FA0040D27D /* FlickrAppTests.swift in Sources */,
 				371D947622F4B73F0008B396 /* testHomeEntity.swift in Sources */,
 				371D947E22F4D4E30008B396 /* testAPIRequests.swift in Sources */,
+				371D949422F6F08F0008B396 /* HomeInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

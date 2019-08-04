@@ -10,9 +10,12 @@ import UIKit
 
 class HomeInteractor: NSObject {
     weak var presenter:HomeInteractorToPresenterProtocol?
-    let flickerAPIService: APIRequestLoader<FlickrAPIRequests> = APIRequestLoader(apiRequest: FlickrAPIRequests())
+    let flickerAPIService: APIRequestLoader<FlickrAPIRequests>
     
-
+    init(with request: APIRequestLoader<FlickrAPIRequests>) {
+        self.flickerAPIService = request
+    }
+    
 }
 
 extension HomeInteractor : HomePresenterToInteractorProtocol{

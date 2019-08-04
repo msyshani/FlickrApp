@@ -56,8 +56,6 @@ class HomePresenter {
 //MARK: - HomeViewToPresenterProtocol
 extension HomePresenter : HomeViewToPresenterProtocol{
     
-    
-
     func viewDidLoad() {
         //self.searchPhoto(withText: self.queryText)
     }
@@ -129,7 +127,6 @@ extension HomePresenter : HomeViewToPresenterProtocol{
 //MARK: - HomeInteractorToPresenterProtocol
 extension HomePresenter : HomeInteractorToPresenterProtocol{
     func imageFetchingRequestCompletedSuccessfully(model:PhotoSearchResult){
-        DispatchQueue.main.async {
             if self.page == 1{
                 self.imageArray = model.photos
             } else {
@@ -138,9 +135,10 @@ extension HomePresenter : HomeInteractorToPresenterProtocol{
             self.searchState = .idle
             self.page = self.page + 1
             self.hasMoreData = model.page < model.pages
-            self.view?.reloadTable()
             self.isLoadingNextPage = false
-        }
+            DispatchQueue.main.async {
+               self.view?.reloadTable()
+            }
     }
     
     func imgaeFetchingRequestFailed(withError error: Error) {
