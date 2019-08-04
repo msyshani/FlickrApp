@@ -18,23 +18,23 @@ class FlickrAPIRequests : APIRequest{
     /// - Returns: An UrlRequest.
     func makeRequest(from dic:[String:String]) throws -> URLRequest? {
         
-        var params: [String: String] = ["method": "flickr.photos.search",
-                                        "api_key": type(of: self).apiKey,
-                                        "format":"json",
-                                        "nojsoncallback":"1",
-                                        "safe_search" : "1"]
+        var params: [String: String] = [Contstants.API.KEY.METHODS     : Contstants.API.VALUE.METHODS,
+                                        Contstants.API.KEY.API_KEY     : type(of: self).apiKey,
+                                        Contstants.API.KEY.FORMAT      : Contstants.API.VALUE.FORMAT,
+                                        Contstants.API.KEY.CALLBACK    : Contstants.API.VALUE.CALLBACK,
+                                        Contstants.API.KEY.SAFE_SEARCH : Contstants.API.VALUE.SAFE_SEARCH]
         
-        if let text = dic["text"]{
-            params["text"] = text
+        if let text = dic[Contstants.API.KEY.TEXT]{
+            params[Contstants.API.KEY.TEXT] = text
         }
-        if let pageNumber = dic["page"]{
-            params["page"] = pageNumber
+        if let pageNumber = dic[Contstants.API.KEY.PAGE]{
+            params[Contstants.API.KEY.PAGE] = pageNumber
         }
-        if let per_page = dic["per_page"]{
-            params["per_page"] = per_page
+        if let per_page = dic[Contstants.API.KEY.PER_PAGE]{
+            params[Contstants.API.KEY.PER_PAGE] = per_page
         }
         
-        let url = try? URLEncoder().urlWith(urlString: "https://api.flickr.com/services/rest/", parameters: params)
+        let url = try? URLEncoder().urlWith(urlString: Contstants.API.BASE_URL, parameters: params)
         print(url)
         let urlRequest = URLRequest(url: url!)
         return urlRequest

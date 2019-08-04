@@ -25,6 +25,7 @@
 		371D948C22F5CE090008B396 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D948A22F5CE090008B396 /* ActivityIndicatorCell.swift */; };
 		371D948D22F5CE090008B396 /* ActivityIndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371D948B22F5CE090008B396 /* ActivityIndicatorCell.xib */; };
 		371D949022F6C3FA0008B396 /* ErrorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D948F22F6C3FA0008B396 /* ErrorEnums.swift */; };
+		371D949222F6C60D0008B396 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D949122F6C60D0008B396 /* Constant.swift */; };
 		372F6A4822F4A1F70040D27D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372F6A4722F4A1F70040D27D /* AppDelegate.swift */; };
 		372F6A4D22F4A1F70040D27D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372F6A4B22F4A1F70040D27D /* Main.storyboard */; };
 		372F6A4F22F4A1FA0040D27D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372F6A4E22F4A1FA0040D27D /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		371D948A22F5CE090008B396 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		371D948B22F5CE090008B396 /* ActivityIndicatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorCell.xib; sourceTree = "<group>"; };
 		371D948F22F6C3FA0008B396 /* ErrorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnums.swift; sourceTree = "<group>"; };
+		371D949122F6C60D0008B396 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		372F6A4422F4A1F70040D27D /* FlickrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372F6A4722F4A1F70040D27D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372F6A4C22F4A1F70040D27D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				371D948F22F6C3FA0008B396 /* ErrorEnums.swift */,
+				371D949122F6C60D0008B396 /* Constant.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				371D947C22F4CA000008B396 /* URLEncoder.swift in Sources */,
 				371D948322F5A57B0008B396 /* ImageCollectionCell.swift in Sources */,
 				371D948C22F5CE090008B396 /* ActivityIndicatorCell.swift in Sources */,
+				371D949222F6C60D0008B396 /* Constant.swift in Sources */,
 				371D949022F6C3FA0008B396 /* ErrorEnums.swift in Sources */,
 				371D948922F5ACDD0008B396 /* ImageDownloader.swift in Sources */,
 				371D947822F4C4640008B396 /* NetworkManager.swift in Sources */,

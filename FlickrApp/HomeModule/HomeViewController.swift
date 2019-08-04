@@ -117,7 +117,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return
         }
         (cell as! ActivityIndicatorCell).isAnimating = true
-        self.presenter?.searchMorePhotos(withText: "kitten")
+        self.presenter?.searchMorePhotos(withText: self.presenter?.queryText ?? "")
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -137,7 +137,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     ImageDownloader.downloader.getDownloadedImage(urlStr: urlString) { (image) in }
                 }
             } else {
-                self.presenter?.searchMorePhotos(withText: "kitten")
+                self.presenter?.searchMorePhotos(withText: self.presenter?.queryText ?? "")
             }
         }
     }
@@ -166,7 +166,7 @@ extension HomeViewController : HomePresenterToViewProtocol{
     }
     
     func showSearchingState(){
-        self.infoLabel.text = "Please wait. we are fetching images for you."
+        self.infoLabel.text = Contstants.Message.SEARCHING
         self.infoLabel.isHidden = false
         self.collectionView.isHidden = true
         self.activityIndicator.isHidden = false

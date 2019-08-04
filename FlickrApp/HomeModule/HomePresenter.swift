@@ -46,7 +46,7 @@ class HomePresenter {
             case .searching:
                 self.view?.showSearchingState()
             case .error:
-                self.view?.showErrorState(message: "We are unable to process your request. please try again")
+                self.view?.showErrorState(message: Contstants.Message.ERROR)
             }
         }
     }
@@ -107,18 +107,18 @@ extension HomePresenter : HomeViewToPresenterProtocol{
     }
     
     private func path(for photo: FlickrPhoto) -> String {
-        var url = "http://farm{farm}.static.flickr.com/{server}/{id}_{secret}.jpg"
+        var url = Contstants.IMAGE_URL.BASE_URL
         if let farm = photo.farm{
-            url = url.replacingOccurrences(of: "{farm}", with: String(farm))
+            url = url.replacingOccurrences(of: Contstants.IMAGE_URL.FARM, with: String(farm))
         }
         if let server = photo.server{
-            url = url.replacingOccurrences(of: "{server}", with: String(server))
+            url = url.replacingOccurrences(of: Contstants.IMAGE_URL.SERVER, with: String(server))
         }
         if let secret = photo.secret{
-            url = url.replacingOccurrences(of: "{secret}", with: secret)
+            url = url.replacingOccurrences(of: Contstants.IMAGE_URL.SECRET, with: secret)
         }
         if let id = photo.id{
-            url = url.replacingOccurrences(of: "{id}", with: id)
+            url = url.replacingOccurrences(of: Contstants.IMAGE_URL.ID, with: id)
         }
         return url
     }

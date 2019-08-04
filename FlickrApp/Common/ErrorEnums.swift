@@ -21,22 +21,22 @@ extension FlickrServiceError: LocalizedError {
         switch self {
         case .invalidImageData:
             return NSLocalizedString(
-                "Invalid image data",
+                Contstants.Message.INVALID_DATA,
                 comment: ""
             )
         case .invalidRequest:
             return NSLocalizedString(
-                "We are unable to process your request, Please try again later",
+                Contstants.Message.ERROR,
                 comment: ""
             )
         case .parsingFailed:
             return NSLocalizedString(
-                "We are unable to parse your request, Please try after some time",
+                Contstants.Message.PARSING_ERROR,
                 comment: ""
             )
         case .noData:
             return NSLocalizedString(
-                "No image found for your search",
+                Contstants.Message.NO_DATA,
                 comment: ""
             )
         }
