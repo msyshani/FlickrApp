@@ -14,21 +14,55 @@ class HomePresenter {
     var router:HomePresenterToRouterProtocol?
     //.....
     var imageArray = [FlickrPhoto]()
-    var queryText = "kitten"
     var page = 1
     private var hasMoreData = false
     private var isLoadingNextPage: Bool = false
+    
+    var queryText: String = "" {
+        didSet {
+            guard queryText != oldValue else {
+                return
+            }
+            self.searchPhoto(withText: self.queryText)
+        }
+    }
+    
+    
+    enum SearchState {
+        case idle
+        case searching
+        case error
+    }
+    
+     var searchState: SearchState = .idle {
+        didSet {
+            guard searchState != oldValue else {
+                return
+            }
+            
+            switch searchState {
+            case .idle:
+                self.view?.showIdealState()
+            case .searching:
+                self.view?.showSearchingState()
+            case .error:
+                self.view?.showErrorState(message: "We are unable to process your request. please try again")
+            }
+        }
+    }
 
 }
 
 //MARK: - HomeViewToPresenterProtocol
 extension HomePresenter : HomeViewToPresenterProtocol{
+    
+    
 
     func viewDidLoad() {
-        self.searchPhoto(withText: self.queryText, page: self.page)
+        //self.searchPhoto(withText: self.queryText)
     }
     
-    func searchPhoto(withText query: String, page: Int) {
+    func searchPhoto(withText query: String) {
         if query == ""{
             return
         }
@@ -36,6 +70,7 @@ extension HomePresenter : HomeViewToPresenterProtocol{
         imageArray = [FlickrPhoto]()
         hasMoreData = false
         self.view?.reloadTable()
+        searchState = .searching
         self.interactor?.searchImageFromService(withText: queryText, page: page, pageCount: 100)
     }
     
@@ -100,6 +135,7 @@ extension HomePresenter : HomeInteractorToPresenterProtocol{
             } else {
                 self.imageArray.append(contentsOf: model.photos)
             }
+            self.searchState = .idle
             self.page = self.page + 1
             self.hasMoreData = model.page < model.pages
             self.view?.reloadTable()
@@ -109,7 +145,8 @@ extension HomePresenter : HomeInteractorToPresenterProtocol{
     
     func imgaeFetchingRequestFailed(withError error: Error) {
         DispatchQueue.main.async {
-            self.view?.displayError(errorMessage: error.localizedDescription)
+            self.searchState = .error
+            self.view?.showErrorState(message: error.localizedDescription)
         }
     }
 }

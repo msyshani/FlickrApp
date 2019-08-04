@@ -20,7 +20,7 @@ protocol HomeViewToPresenterProtocol:class {
     var queryText :String { get set }
     
     func viewDidLoad()
-    func searchPhoto(withText query:String, page:Int)
+    func searchPhoto(withText query:String)
     func searchMorePhotos(withText query: String)
     //TableView
     func numberOfSection()->Int
@@ -34,6 +34,9 @@ protocol HomePresenterToViewProtocol:class {
     var presenter: HomeViewToPresenterProtocol? {get set}
     func reloadTable()
     func displayError(errorMessage:String)
+    func showIdealState()
+    func showSearchingState()
+    func showErrorState(message:String)
 }
 
 //MARK: Presenter and Interactor

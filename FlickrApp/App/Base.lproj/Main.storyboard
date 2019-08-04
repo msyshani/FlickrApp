@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1JP-qz-hvl">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1JP-qz-hvl">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUQ-vI-SeM">
@@ -49,37 +49,69 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait we are fetching the images for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wb0-8l-6Vr">
-                                <rect key="frame" x="36" y="428" width="353" height="40"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="424.5" width="369" height="47"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P0X-YE-Lr4">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P0X-YE-Lr4">
                                 <rect key="frame" x="197" y="388" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS4-xf-aFw">
+                                <rect key="frame" x="132" y="476.5" width="150" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PVQ-74-A5w"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="gb9-XW-tE4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <action selector="retryButtonClicked:" destination="rYm-f3-Zmx" eventType="touchUpInside" id="e9R-3y-S78"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wb0-8l-6Vr" firstAttribute="leading" secondItem="zzL-tA-KgE" secondAttribute="leading" constant="36" id="7rj-9k-BmI"/>
+                            <constraint firstItem="wb0-8l-6Vr" firstAttribute="leading" secondItem="zzL-tA-KgE" secondAttribute="leading" constant="20" id="7rj-9k-BmI"/>
                             <constraint firstItem="1JP-qz-hvl" firstAttribute="top" secondItem="zzL-tA-KgE" secondAttribute="top" id="AHy-5U-zap"/>
                             <constraint firstItem="wb0-8l-6Vr" firstAttribute="centerY" secondItem="vWE-Oj-Lzf" secondAttribute="centerY" id="Ani-Cm-X0Y"/>
                             <constraint firstItem="1JP-qz-hvl" firstAttribute="trailing" secondItem="zzL-tA-KgE" secondAttribute="trailing" id="M6V-kP-e9H"/>
+                            <constraint firstItem="fS4-xf-aFw" firstAttribute="centerX" secondItem="zzL-tA-KgE" secondAttribute="centerX" id="WKj-G4-WmF"/>
                             <constraint firstItem="P0X-YE-Lr4" firstAttribute="centerY" secondItem="vWE-Oj-Lzf" secondAttribute="centerY" constant="-50" id="XVf-AI-gXv"/>
                             <constraint firstItem="P0X-YE-Lr4" firstAttribute="centerX" secondItem="zzL-tA-KgE" secondAttribute="centerX" id="b3H-bW-hdV"/>
                             <constraint firstItem="1JP-qz-hvl" firstAttribute="leading" secondItem="zzL-tA-KgE" secondAttribute="leading" id="fmN-mD-7Ey"/>
+                            <constraint firstItem="fS4-xf-aFw" firstAttribute="top" secondItem="wb0-8l-6Vr" secondAttribute="bottom" constant="5" id="gzW-ns-CVM"/>
                             <constraint firstItem="1JP-qz-hvl" firstAttribute="bottom" secondItem="zzL-tA-KgE" secondAttribute="bottom" id="mpw-df-veO"/>
                             <constraint firstItem="zzL-tA-KgE" firstAttribute="trailing" secondItem="wb0-8l-6Vr" secondAttribute="trailing" constant="25" id="qlj-Ga-K5a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zzL-tA-KgE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tY4-Fg-SJs"/>
+                    <navigationItem key="navigationItem" id="tY4-Fg-SJs">
+                        <connections>
+                            <outlet property="titleView" destination="Eyl-ZY-Ncy" id="3AJ-Vv-aMd"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
-                        <outlet property="activityIndicator" destination="P0X-YE-Lr4" id="agU-5y-B7b"/>
+                        <outlet property="activityIndicator" destination="P0X-YE-Lr4" id="F3i-UR-uua"/>
                         <outlet property="collectionView" destination="1JP-qz-hvl" id="4WX-lE-mzm"/>
-                        <outlet property="infoLabel" destination="wb0-8l-6Vr" id="Zhy-sI-sYH"/>
+                        <outlet property="infoLabel" destination="wb0-8l-6Vr" id="L6c-Ul-aVT"/>
+                        <outlet property="retryButton" destination="fS4-xf-aFw" id="6R5-O5-MLg"/>
+                        <outlet property="searchBar" destination="Eyl-ZY-Ncy" id="c1l-zx-YpT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GCl-Wi-5LF" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="Eyl-ZY-Ncy">
+                    <rect key="frame" x="0.0" y="0.0" width="412" height="56"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
+                    <connections>
+                        <outlet property="delegate" destination="rYm-f3-Zmx" id="8Ub-3H-VP8"/>
+                    </connections>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="2852.1739130434785" y="-560.49107142857144"/>
         </scene>

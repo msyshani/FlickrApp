@@ -31,14 +31,6 @@ extension APIRequest {
     }
 }
 
-enum FlickrServiceError: Error {
-    case invalidImageData
-    case invalidRequest
-    case parsingFailed
-    case noData
-    /// Error when the retrieved image could not be parsed.
-}
-
 
 class APIRequestLoader<T: APIRequest> {
   

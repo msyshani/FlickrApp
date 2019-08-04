@@ -10,16 +10,18 @@ import UIKit
 
 class HomeViewController: UIViewController {
     var presenter: HomeViewToPresenterProtocol?
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var infoLabel: UILabel!
-
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet private weak var retryButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //
+        setUpView()
         registercells()
         presenter?.viewDidLoad()
-        setUpView()
     }
     
 
@@ -29,10 +31,18 @@ class HomeViewController: UIViewController {
     }
     
     func setUpView(){
+        searchBar.placeholder = NSLocalizedString("placeholder_search", comment: "Search")
+        searchBar.becomeFirstResponder()
         collectionView.isHidden = true
-        activityIndicator.isHidden = false
-        infoLabel.isHidden = false
+        activityIndicator.isHidden = true
+        infoLabel.isHidden = true
+        retryButton.isHidden = true
     }
+    
+    @IBAction private func retryButtonClicked(_ sender: Any) {
+        self.presenter?.searchPhoto(withText: self.presenter?.queryText ?? "")
+    }
+    
 
 }
 
@@ -146,5 +156,56 @@ extension HomeViewController : HomePresenterToViewProtocol{
         
     }
     
+    func showIdealState(){
+        self.infoLabel.text = ""
+        self.infoLabel.isHidden = true
+        self.collectionView.isHidden = false
+        self.activityIndicator.isHidden = true
+        self.retryButton.isHidden = true
+        self.activityIndicator.stopAnimating()
+    }
     
+    func showSearchingState(){
+        self.infoLabel.text = "Please wait. we are fetching images for you."
+        self.infoLabel.isHidden = false
+        self.collectionView.isHidden = true
+        self.activityIndicator.isHidden = false
+        self.retryButton.isHidden = true
+        self.activityIndicator.startAnimating()
+    }
+    
+    func showErrorState(message:String){
+        self.infoLabel.text = message
+        self.infoLabel.isHidden = false
+        self.collectionView.isHidden = true
+        self.activityIndicator.isHidden = true
+        self.retryButton.isHidden = false
+        self.activityIndicator.stopAnimating()
+    }
+}
+
+
+//MARK: - UISearchBarDelegate
+extension HomeViewController : UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text  == ""{
+            searchBar.resignFirstResponder()
+            return
+        }
+        self.presenter?.queryText = searchBar.text ?? ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //overlayControl.isHidden = false
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.text = self.presenter?.queryText
+        return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //overlayControl.isHidden = true
+    }
 }
