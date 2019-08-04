@@ -35,7 +35,6 @@ class FlickrAPIRequests : APIRequest{
         }
         
         let url = try? URLEncoder().urlWith(urlString: Contstants.API.BASE_URL, parameters: params)
-        print(url)
         let urlRequest = URLRequest(url: url!)
         return urlRequest
     }
@@ -50,7 +49,7 @@ class FlickrAPIRequests : APIRequest{
             let flickrModel = try JSONDecoder().decode(PhotoSearchResultWrapper.self, from: data)
             return flickrModel.result
         }catch{
-            print(error)
+            //print(error)
         }
         return nil
     }
